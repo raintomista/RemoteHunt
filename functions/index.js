@@ -1,4 +1,5 @@
 const functions = require('firebase-functions');
+const cors = require('cors')
 const app = require('express')();
 
 const {
@@ -8,6 +9,7 @@ const {
   deleteJob
 } = require('./api/jobs')
 
+app.use(cors())
 app.get('/jobs', retrieveAllJobs)
 app.post('/jobs', createJob)
 app.patch('/jobs/:jobId', updateJob)
