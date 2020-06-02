@@ -8,7 +8,7 @@ const Header = props => (
       <Button key="about">About</Button>,
       <Button key="employers">Employers</Button>,
       <Button key="contact">Contact</Button>,
-      <Button type="primary">Add Job</Button>,
+      <Button key="add-job" type="primary">Add Job</Button>,
     ]}
   >
   </PageHeader>
