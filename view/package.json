@@ -4,12 +4,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rain Tomista (rstomista@up.edu.ph)",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "live-server": "^1.2.1",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
