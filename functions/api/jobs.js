@@ -2,7 +2,7 @@ const { db } = require('../util/admin')
 
 exports.createJob = (req, res) => {
   const newJob = {
-    company: req.body.title,
+    company: req.body.company,
     datePosted: new Date().toISOString(),
     description: req.body.description,
     title: req.body.title,
@@ -61,7 +61,7 @@ exports.updateJob = (req, res) => {
 
   document
     .update(req.body)
-    .then(() => {
+    .then(data => {
       return res.json({
         message: 'Updated successfully'
       })
