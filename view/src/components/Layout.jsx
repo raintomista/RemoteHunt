@@ -24,12 +24,10 @@ const Layout = props => {
 
   return (
     <Row>
-      <Col span={8}>
+      <Col offset={8} span={8}>
         <Header/>
         <SearchBar/>
         <Results/>
-      </Col>
-      <Col span={16}>
       </Col>
     </Row>
   )
