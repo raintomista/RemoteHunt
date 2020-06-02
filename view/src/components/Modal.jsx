@@ -7,23 +7,6 @@ export const AddModal = props => {
   const [state, setState] = useContext(StateContext)
   const [form] = Form.useForm()
 
-  const createJob = async (job) => {
-    try {
-      const response = await API.post('jobs', job)
-      const updatedJobs = state.jobs.slice()
-      updatedJobs.unshift(response.data)
-      form.resetFields()
-      
-      setState({
-        ...state,
-        jobs: updatedJobs,
-        addModal: false
-      })
-    } catch(err) {
-      throw new Error(err)
-    }
-  }
-
   const handleCancel = event => {
     form.resetFields()
     setState({
@@ -33,8 +16,18 @@ export const AddModal = props => {
   }
 
   const handleSubmit = async (event) => {
-    const formValue = await form.validateFields()
-    createJob(formValue)
+    const newJob = await form.validateFields()
+    const updatedJobs = state.jobs.slice()
+    API.post('jobs', newJob)
+      .then(({ data: newJob }) => updatedJobs.unshift(newJob))
+      .then(() => form.resetFields())
+      .then(() => setState({
+        jobs: updatedJobs,
+        addModal: false
+      }))
+      .catch(err => {
+        throw new Error(err)
+      })
   }
 
   return (
@@ -104,19 +97,17 @@ export const EditModal = props => {
     })
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const url = `jobs/${editForm.id}`
     form.validateFields()
       .then(updatedJob => API.patch(url, updatedJob))
       .then(() => API.get(`jobs`))
-      .then(response => {
-        form.resetFields()
-        setState({
-          ...state,
-          jobs: response.data,
-          editModal: false
-        })
-      })
+      .then(response => setState({
+        ...state,
+        jobs: response.data,
+        editModal: false
+      }))
+      .then(() => form.resetFields())
       .catch(err => {
         throw new Error(err)
       })
