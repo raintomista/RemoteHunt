@@ -8,7 +8,7 @@ import 'antd/dist/antd.css'
 const App = () => {
   const state = useState({
     jobs: [],
-    modal: true
+    modal: false
   })
 
   return (
