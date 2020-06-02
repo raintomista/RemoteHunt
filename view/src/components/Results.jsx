@@ -5,20 +5,27 @@ import JobCard from './JobCard'
 
 const Results = props => {
   const [state, setState] = useContext(StateContext)
+  const { jobs } = state
 
   return (
     <React.Fragment>
-      <Typography.Title level={3}>
-        {`${state.jobs.length} Result/s`} 
+      <Typography.Title
+        level={3}
+        style={{
+          margin: 0,
+          paddingTop: 16,
+          paddingBottom: 16
+        }}
+      >
+        {jobs.length} Result/s
       </Typography.Title>
 
-      {state.jobs.map(job => (
+      {jobs.map(job => (
         <JobCard
           {...job}
           key={job.id}
         />
       ))}
-
     </React.Fragment>
   )
 }

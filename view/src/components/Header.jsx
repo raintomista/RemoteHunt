@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { PageHeader, Button } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
 import StateContext from "../context/StateContext"
 
 const Header = props => {
@@ -11,16 +12,21 @@ const Header = props => {
       addModal: true
     })
   }
+  
   return (
     <PageHeader
       title="Remotehunt"
+      style={{
+        paddingLeft: 0,
+        paddingRight: 0
+      }}
       extra={[
         <Button
           key="add-job"
           type="primary"
           onClick={handleClick}
         >
-          Add Job
+          <PlusOutlined/> Add Job
         </Button>
       ]}
     >
