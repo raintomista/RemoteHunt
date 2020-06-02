@@ -8,7 +8,7 @@ const Header = props => {
   const handleClick = () => {
     useState({
       ...state,
-      modal: true
+      addModal: true
     })
   }
   return (

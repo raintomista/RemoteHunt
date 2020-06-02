@@ -4,17 +4,33 @@ import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-de
 import StateContext from '../context/StateContext'
 import API from '../api'
 
-const EditButton = () => (
-  <Button key="edit" type="text">
-    <EditOutlined/> Edit
-  </Button>
-)
+const EditButton = props => {
+  const [state, setState] = useContext(StateContext)
+
+  const handleClick = () => {
+    setState({
+      ...state,
+      editModal: true,
+      editForm: props
+    })
+  }
+  
+  return (
+    <Button
+      key="edit"
+      type="text"
+      onClick={handleClick}
+    >
+      <EditOutlined/> Edit
+    </Button>
+  )
+}
 
 const DeleteButton = props => {
   const [state, setState] = useContext(StateContext)
 
   const handleConfirm = async () => {
-    await API.delete(`jobs/${props.jobId}`)
+    await API.delete(`jobs/${props.id}`)
     const response = await API.get(`jobs`)
     setState({
       ...state,
@@ -22,7 +38,7 @@ const DeleteButton = props => {
     })
   }
 
-  const handleClick = event => {
+  const handleClick = () => {
     Modal.confirm({
       title: 'Are you sure you want to delete this job post?',
       icon: <ExclamationCircleOutlined />,
@@ -48,8 +64,8 @@ const JobCard = props => {
       key={props.id}
       style={{ marginBottom: 20 }}
       actions={[
-        <EditButton/>,
-        <DeleteButton jobId={props.id}/>
+        <EditButton {...props}/>,
+        <DeleteButton id={props.id}/>
       ]}
     >
       <h3>{props.company}</h3>
