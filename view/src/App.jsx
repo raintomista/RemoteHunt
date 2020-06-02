@@ -11,7 +11,8 @@ const App = () => {
     jobs: [],
     addModal: false,
     editModal: false,
-    editForm: null
+    editForm: null,
+    loading: true
   })
 
   return (

@@ -4,6 +4,7 @@ import { Row, Col } from 'antd'
 import API from './api'
 import Header from './Header'
 import SearchBar from './SearchBar'
+import Spinner from './Spinner'
 import Results from './Results'
 import StateContext from './StateContext'
 
@@ -14,7 +15,8 @@ const Layout = props => {
     API.get(`jobs`).then(res => {
       setState({
         ...state,
-        jobs: res.data
+        jobs: res.data,
+        loading: false
       })
     })
   }
@@ -25,10 +27,16 @@ const Layout = props => {
 
   return (
     <Row>
-      <Col offset={8} span={8}>
+      <Col
+        offset={8}
+        span={8}
+      >
         <Header/>
         <SearchBar/>
-        <Results/>
+        {state.loading
+          ? <Spinner/>
+          : <Results/>
+        }
       </Col>
     </Row>
   )
