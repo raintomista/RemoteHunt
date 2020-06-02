@@ -12,6 +12,7 @@ export const AddJobModal = props => {
       const response = await API.post('jobs', job)
       const updatedJobs = state.jobs.slice()
       updatedJobs.unshift(response.data)
+      form.resetFields()
       
       setState({
         ...state,
@@ -24,6 +25,7 @@ export const AddJobModal = props => {
   }
 
   const handleCancel = event => {
+    form.resetFields()
     setState({
       ...state,
       modal: false
