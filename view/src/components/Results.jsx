@@ -1,22 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Card, Typography } from 'antd'
-
-const { Title } = Typography
+import StateContext from '../context/StateContext'
 
 const Results = props => {
+  const [state, setState] = useContext(StateContext)
+
   return (
     <React.Fragment>
-      <Title level={2}>4 Results</Title>
-      <Card>
-        <h3>Digital Ocean</h3>
-        <h4>Sr. Back-end Developer</h4>
-        <h5>San Francisco</h5>
-      </Card>
-      <Card>
-        <h3>Digital Ocean</h3>
-        <h4>Sr. Back-end Developer</h4>
-        <h5>San Francisco</h5>
-      </Card>
+      <Typography.Title level={2}>
+        {`${state.jobs.length} Result/s`} 
+      </Typography.Title>
+
+      {state.jobs.map(job => (
+        <Card key={job.id}>
+          <h3>{job.company}</h3>
+          <h4>{job.title}</h4>
+          <h5>{job.description}</h5>
+        </Card>
+      ))}
+
     </React.Fragment>
   )
 }
