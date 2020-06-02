@@ -1,16 +1,17 @@
 import React, { useContext } from 'react'
 import { Card, Button, Typography } from 'antd'
-import StateContext from '../context/StateContext'
+
 import JobCard from './JobCard'
+import StateContext from './StateContext'
 
 const Results = props => {
-  const [state, setState] = useContext(StateContext)
+  const [state] = useContext(StateContext)
   const { jobs } = state
 
   return (
     <React.Fragment>
       <Typography.Title
-        level={3}
+        level={4}
         style={{
           margin: 0,
           paddingTop: 16,

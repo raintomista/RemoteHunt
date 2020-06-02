@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Modal, Button, Form, Input } from 'antd';
-import API from '../api'
-import StateContext from '../context/StateContext'
+
+import API from './api'
+import StateContext from './StateContext'
 
 export const AddModal = props => {
   const [state, setState] = useContext(StateContext)

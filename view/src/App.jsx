@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import Layout from './components/Layout'
-import { AddModal, EditModal } from './components/Modal'
-import StateContext from './context/StateContext'
 import 'antd/dist/antd.css'
+
+import Layout from './Layout'
+import { AddModal, EditModal } from './Modal'
+import StateContext from './StateContext'
 
 const App = () => {
   const state = useState({

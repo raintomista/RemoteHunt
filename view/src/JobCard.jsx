@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { Card, Button, Modal } from 'antd'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
-import StateContext from '../context/StateContext'
-import API from '../api'
+
+import API from './api'
+import StateContext from './StateContext'
 
 const EditButton = props => {
   const [state, setState] = useContext(StateContext)
@@ -62,7 +63,7 @@ const JobCard = props => {
   return (
     <Card
       key={props.id}
-      style={{ marginBottom: 20 }}
+      style={{ marginBottom: 16 }}
       actions={[
         <EditButton {...props}/>,
         <DeleteButton id={props.id}/>

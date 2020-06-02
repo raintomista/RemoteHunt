@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import { Row, Col } from 'antd'
-import API from '../api'
-import StateContext from '../context/StateContext'
+
+import API from './api'
 import Header from './Header'
 import SearchBar from './SearchBar'
 import Results from './Results'
+import StateContext from './StateContext'
 
 const Layout = props => {
   const [state, setState] = useContext(StateContext)
