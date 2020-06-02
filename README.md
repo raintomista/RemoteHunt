@@ -8,4 +8,4 @@ Since the Firebase cloud functions are already deployed, you only need to build 
     cd view
     npm install
     npm run build
-    live-server dist/
+    npm run prod

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
+    "prod": "live-server dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rain Tomista (rstomista@up.edu.ph)",
