@@ -1,9 +1,25 @@
 import React, { useContext } from 'react'
 import { Card, Button, Modal } from 'antd'
-import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined, LinkOutlined } from '@ant-design/icons'
 
 import API from './api'
 import StateContext from './StateContext'
+
+const ApplyButton = props => {
+  const handleClick = () => {
+    window.open(props.url, '__blank')
+  }
+  
+  return (
+    <Button
+      key="apply"
+      type="text"
+      onClick={handleClick}
+    >
+      <LinkOutlined/> Apply
+    </Button>
+  )
+}
 
 const EditButton = props => {
   const [state, setState] = useContext(StateContext)
@@ -65,6 +81,7 @@ const JobCard = props => {
       key={props.id}
       style={{ marginBottom: 16 }}
       actions={[
+        <ApplyButton url={props.url}/>,
         <EditButton {...props}/>,
         <DeleteButton id={props.id}/>
       ]}
